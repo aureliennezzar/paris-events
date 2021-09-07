@@ -1,0 +1,7 @@
+.event{
+  width: 500px;
+  border: 1px solid red;
+  &.is-fav{
+    border-color: green;
+  }
+}
