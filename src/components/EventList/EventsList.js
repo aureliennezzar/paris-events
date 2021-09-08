@@ -3,6 +3,9 @@ import "./EventList.scss"
 import Event from "../Event/Event";
 
 const EventsList = ({events}) => {
+    useEffect(()=>{
+        console.log(events,"eventlist")
+    },[])
 
     return (
         <div className="events-list">
