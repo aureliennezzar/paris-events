@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "./Event.scss"
+import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
 const Event = ({infos, eventID}) => {
     const [isFav, setIsFav] = useState(false)
+    const history = useHistory()
     const storage = window.localStorage;
     const {cover, cover_alt, title, date_start, lead_text} = infos
 
@@ -16,6 +18,10 @@ const Event = ({infos, eventID}) => {
         }
 
     }, [])
+
+    const ChangePath = (path)=>{
+        history.push(path)
+    }
     const handleFav = () => {
         if (isFav) {
             const result = JSON.parse(storage.getItem('favEvent')).filter(event => event !== eventID);
@@ -32,7 +38,9 @@ const Event = ({infos, eventID}) => {
     }
 
     return (
-        <article className={`event ${isFav ? "is-fav" : ""}`}>
+        <article className={`event ${isFav ? "is-fav" : ""}`} onClick={()=>{
+            ChangePath("evenement/"+eventID);
+        }}>
             <div className="top">
                 <img src={cover.url} alt={cover_alt}/>
             </div>

@@ -10,16 +10,13 @@ const Home = () => {
             .then(data => data.json())
             .then(data => {
                 console.log(data)
-                fetch(`${API}/records/${data.records[0].record.id}`)
-                    .then(data => data.json())
-                    .then(data => {
-                        setLastEvent(data.record)
-                    })
+                setLastEvent(data.records[0].record)
             })
     }, [])
     return (
         <section className="page page-home">
             <h1>Bienvenue sur paris event</h1>
+            div.test
             {lastEvent && <Event infos={lastEvent.fields} eventID={lastEvent.id}></Event>}
         </section>
     )
