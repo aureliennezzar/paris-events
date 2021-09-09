@@ -19,6 +19,7 @@ const Favorites = ()=>{
     return (
         <section className="page page-favorites">
 <h1>favoris</h1>
+
             <EventsList events={favlist}/>
         </section>
     )

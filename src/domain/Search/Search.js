@@ -1,21 +1,24 @@
 import React, {useState} from "react";
 import {fetchApi} from "../../utils/utils";
 import EventsList from "../../components/EventList/EventsList";
+import InfiniteScroll from "../../components/EventsInfinite/EventsInfinite";
+import EventsInfinite from "../../components/EventsInfinite/EventsInfinite";
 
 const Search = () => {
     const [query, setQuery] = useState("")
+    const [input, setInput] = useState("")
     const [events, setEvents] = useState([])
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetchApi(setEvents, "/records?search=" + query)
+        setQuery(input)
     }
     return (
         <section className="page page-search">
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Rechercher..." onInput={(e) => setQuery(e.target.value)} value={query}/>
+                <input type="text" placeholder="Rechercher..." onInput={(e) => setInput(e.target.value)} value={input}/>
                 <button type="submit">Rechercher</button>
             </form>
-            {events && <EventsList events={events.records}/>}
+            {query && <EventsInfinite query={query} />}
         </section>
     )
 }

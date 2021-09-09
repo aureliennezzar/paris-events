@@ -39,7 +39,7 @@ const Event = ({infos, eventID}) => {
 
     return (
         <article className={`event ${isFav ? "is-fav" : ""}`} onClick={()=>{
-            ChangePath("evenement/"+eventID);
+            // ChangePath("evenement/"+eventID);
         }}>
             <div className="top">
                 <img src={cover.url} alt={cover_alt}/>

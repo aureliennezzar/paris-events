@@ -30,6 +30,14 @@ class EventsInfinite extends Component {
         this.observer.observe(this.loadingRef);
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.query !== this.props.query) {
+            console.log("compo update")
+            this.setState({...this.state, events: [], count: 0, page: 0});
+            this.getEvents(0);
+        }
+    }
+
     handleObserver(entities, observer) {
         const y = entities[0].boundingClientRect.y;
         if (this.state.prevY > y && this.state.page <= this.state.count - 10) {
@@ -60,7 +68,6 @@ class EventsInfinite extends Component {
             margin: "30px"
         };
 
-
         // To change the loading icon behavior
         const loadingTextCSS = {display: this.state.loading ? "block" : "none"};
 
@@ -74,8 +81,7 @@ class EventsInfinite extends Component {
 
                 <div
                     ref={loadingRef => (this.loadingRef = loadingRef)}
-                    style={loadingCSS}
-                >
+                    style={loadingCSS}>
                     <span style={loadingTextCSS}>Loading...</span>
                 </div>
             </div>
