@@ -1,0 +1,25 @@
+.nav{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  .brand{
+    width: 200px;
+    display: block;
+  }
+  ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    li{
+      a{
+        text-transform: uppercase;
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}

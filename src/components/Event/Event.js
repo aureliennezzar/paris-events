@@ -45,8 +45,8 @@ const Event = ({infos, eventID}) => {
                 <img src={cover.url} alt={cover_alt}/>
             </div>
             <div className="bottom">
-                <h3 className="title">{title}</h3>
                 <p className="date">{date_start}</p>
+                <h3 className="title">{title}</h3>
                 <p className="desc">{lead_text}</p>
             </div>
             <button className="btn-fav" onClick={handleFav}>

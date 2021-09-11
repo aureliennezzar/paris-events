@@ -7,3 +7,6 @@ export const fetchApi = (setState, apiSearch) => {
             setState({...data});
         })
 }
+export const formatDate = ()=>{
+
+}

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {fetchApi} from "../../utils/utils";
 import Event from "../../components/Event/Event";
+import "./Home.scss"
+import bgImg from "../../assets/img/event.jpg"
 
 const Home = () => {
     const [lastEvent, setLastEvent] = useState(null)
@@ -15,8 +16,14 @@ const Home = () => {
     }, [])
     return (
         <section className="page page-home">
-            <h1>Bienvenue sur paris event</h1>
-            {lastEvent && <Event infos={lastEvent.fields} eventID={lastEvent.id}></Event>}
+            <div className="hero">
+                <h1>Que faire à paris ?</h1>
+                <img src={bgImg}/>
+            </div>
+            <div className="last-event">
+                <h2>Dernier evenement</h2>
+                {lastEvent && <Event infos={lastEvent.fields} eventID={lastEvent.id}></Event>}
+            </div>
         </section>
     )
 }
