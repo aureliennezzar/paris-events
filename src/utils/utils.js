@@ -9,11 +9,8 @@ export const fetchApi = (setState, apiSearch) => {
 }
 export const formatDate = (date)=>{
     const time = new Date(date);
-    var year    = time.getFullYear();
-    var month   = ('0' + time.getMonth()).slice(-2);
-    var day   = ('0' + time.getDay()).slice(-2);
-    var hour    = time.getHours();
-    var minute  = time.getMinutes();
-    var seconds = time.getSeconds();
+    let year    = time.getFullYear();
+    let month   = ('0' + time.getMonth()).slice(-2);
+    let day   = ('0' + time.getDay()).slice(-2);
     return `${day}.${month}.${year}`
 }

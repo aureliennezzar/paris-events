@@ -43,21 +43,23 @@ const Event = ({infos, eventID}) => {
             <div className="top">
                 <img src={cover.url} alt={cover_alt}/>
             </div>
-            <div className="bottom">
-                <div className="bottom-hero">
-                    <p className="date">{formatDate(date_start)}</p>
-                    <p className={`price ${price_type === "payant"?"paying":"free"}`}>{price_type}</p>
+            <div className="body">
+                <div className="bottom">
+                    <div className="bottom-hero">
+                        <p className="date">{formatDate(date_start)}</p>
+                        <p className={`price ${price_type === "payant"?"paying":"free"}`}>{price_type}</p>
+                    </div>
+                    <h3 className="title">{title}</h3>
+                    <p className="desc">{lead_text}</p>
                 </div>
-                <h3 className="title">{title}</h3>
-                <p className="desc">{lead_text}</p>
-            </div>
-            <div className="event-footer">
-                <p className="link" onClick={()=>{
-                    ChangePath("evenement/"+eventID);
-                }}>Voir l'évenement</p>
-                <button className="btn-fav" onClick={handleFav}>
-                    fav
-                </button>
+                <div className="event-footer">
+                    <p className="link" onClick={()=>{
+                        ChangePath("evenement/"+eventID);
+                    }}>Voir l'évenement</p>
+                    <p className="link" onClick={handleFav}>
+                        {isFav ? "Enlever des favoris" : "Ajouter aux favoris"}
+                    </p>
+                </div>
             </div>
         </article>
     )

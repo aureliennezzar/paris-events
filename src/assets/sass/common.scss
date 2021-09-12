@@ -18,7 +18,7 @@
 	--white-primary: #f1f1f1;
 	--black-primary: #101010;
 	--green-primary: #459779;
-	--silver-primary:#666666;
+	--silver-primary: #666666;
 }
 
 //Buttons
@@ -48,4 +48,11 @@
 //Other
 html, body{
 	font-family: 'Rubik', sans-serif;
+}
+
+.link{
+	cursor: pointer;
+	font-size: 14px;
+	color: #657ED4;
+	text-decoration: underline;
 }

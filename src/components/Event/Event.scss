@@ -1,21 +1,20 @@
 .event{
   position: relative;
-  padding-bottom: 40px;
   width: 350px;
   min-height: 500px;
+  box-shadow: 5px 7px 35px 8px rgba(0,0,0,0.05);
+  border-radius: 7px;
+  &-footer, .bottom{
+    padding: 0 20px;
+  }
   &-footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
+    min-height: 40px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     .link{
-      cursor: pointer;
-      font-size: 14px;
-      color: #657ED4;
-      text-decoration: underline;
+      white-space: nowrap;
+      line-height: 40px;
     }
   }
   .top{
@@ -25,7 +24,18 @@
       height: 100%;
       object-fit: cover;
       border-radius: 7px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
+  }
+  .body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    padding-bottom: 10px;
+    margin: 0;
+    padding-top: 10px;
   }
   .bottom{
     &-hero{
@@ -70,7 +80,8 @@
       margin-bottom: 10px;
     }
     .title{
-      font-size: 25px;
+      font-size: 20px;
+      line-height: 26px;
     }
     .desc{
       color: var(--silver-primary);

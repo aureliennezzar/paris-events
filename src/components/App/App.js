@@ -11,10 +11,10 @@ function App() {
             <Nav />
             <Switch>
                 <Route exact path="/" component={() => <Redirect to='/accueil' />} />
-                <Route path="/accueil" component={() => <Home></Home>}></Route>
-                <Route path="/rechercher" component={() => <Search></Search>}></Route>
-                <Route path="/favoris" component={() => <Favorites></Favorites>}></Route>
-                <Route path="/evenement/:id" component={() => <SingleEvent></SingleEvent>}></Route>
+                <Route exact path="/accueil" component={() => <Home></Home>}></Route>
+                <Route exact path="/rechercher/:query" component={() => <Search></Search>}></Route>
+                <Route exact path="/favoris" component={() => <Favorites></Favorites>}></Route>
+                <Route exact path="/evenement/:id" component={() => <SingleEvent></SingleEvent>}></Route>
             </Switch>
         </div>
     );
