@@ -3,14 +3,19 @@ import "./EventList.scss"
 import Event from "../Event/Event";
 
 const EventsList = ({events}) => {
-    useEffect(()=>{
-        console.log(events,"eventlist")
-    },[])
+    useEffect(() => {
+        console.log(events, "eventlist")
+    }, [])
 
     return (
         <div className="events-list">
-            {events && events.map((item,i) => <Event key={i} infos={item.record.fields} eventID={item.record.id}/>
-            )}
+            <ul>
+                {events && events.map((item, i) => (
+                    <li>
+                        <Event key={i} infos={item.record.fields} eventID={item.record.id}/>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }

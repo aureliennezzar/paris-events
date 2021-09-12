@@ -7,6 +7,13 @@ export const fetchApi = (setState, apiSearch) => {
             setState({...data});
         })
 }
-export const formatDate = ()=>{
-
+export const formatDate = (date)=>{
+    const time = new Date(date);
+    var year    = time.getFullYear();
+    var month   = ('0' + time.getMonth()).slice(-2);
+    var day   = ('0' + time.getDay()).slice(-2);
+    var hour    = time.getHours();
+    var minute  = time.getMinutes();
+    var seconds = time.getSeconds();
+    return `${day}.${month}.${year}`
 }

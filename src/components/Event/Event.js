@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import "./Event.scss"
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
+import {formatDate} from "../../utils/utils";
 
 const Event = ({infos, eventID}) => {
     const [isFav, setIsFav] = useState(false)
     const history = useHistory()
     const storage = window.localStorage;
-    const {cover, cover_alt, title, date_start, lead_text} = infos
+    const {cover, cover_alt, title, date_start, lead_text, price_type} = infos
 
 
     useEffect(() => {
@@ -38,20 +39,26 @@ const Event = ({infos, eventID}) => {
     }
 
     return (
-        <article className={`event ${isFav ? "is-fav" : ""}`} onClick={()=>{
-            // ChangePath("evenement/"+eventID);
-        }}>
+        <article className={`event ${isFav ? "is-fav" : ""}`} >
             <div className="top">
                 <img src={cover.url} alt={cover_alt}/>
             </div>
             <div className="bottom">
-                <p className="date">{date_start}</p>
+                <div className="bottom-hero">
+                    <p className="date">{formatDate(date_start)}</p>
+                    <p className={`price ${price_type === "payant"?"paying":"free"}`}>{price_type}</p>
+                </div>
                 <h3 className="title">{title}</h3>
                 <p className="desc">{lead_text}</p>
             </div>
-            <button className="btn-fav" onClick={handleFav}>
-                fav
-            </button>
+            <div className="event-footer">
+                <p className="link" onClick={()=>{
+                    ChangePath("evenement/"+eventID);
+                }}>Voir l'évenement</p>
+                <button className="btn-fav" onClick={handleFav}>
+                    fav
+                </button>
+            </div>
         </article>
     )
 }

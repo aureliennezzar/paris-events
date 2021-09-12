@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Event from "../Event/Event";
+import "../EventList/EventList.scss"
+import loadImg from "../../assets/img/load.svg"
 
 class EventsInfinite extends Component {
     constructor() {
@@ -65,26 +67,32 @@ class EventsInfinite extends Component {
         // Additional css
         const loadingCSS = {
             height: "100px",
-            margin: "30px"
+            margin: "30px",
+            display: "flex",
+            justifyContent: "center",
         };
 
         // To change the loading icon behavior
         const loadingTextCSS = {display: this.state.loading ? "block" : "none"};
 
         return (
-            <div className="container">
-                <div style={{minHeight: "800px"}}>
-                    {this.state.events.map((event, i) => (
-                        <Event key={i} infos={event.record.fields} eventID={event.record.id}/>
-                    ))}
+            <>
+                <div style={{minHeight: "800px"}} className="events-list">
+                    <ul>
+                        {this.state.events.map((event, i) => (
+                            <li>
+                                <Event key={i} infos={event.record.fields} eventID={event.record.id}/>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
                 <div
                     ref={loadingRef => (this.loadingRef = loadingRef)}
                     style={loadingCSS}>
-                    <span style={loadingTextCSS}>Loading...</span>
+                    <span style={loadingTextCSS}><img src={loadImg}/></span>
                 </div>
-            </div>
+            </>
         );
     }
 }
