@@ -5,9 +5,17 @@
     position: relative;
     padding: 60px;
     margin-bottom: 60px;
+    @media (max-width: 768px){
+      padding: 60px 15px;
+
+    }
     h1{
       color: white;
       font-size: 70px;
+      @media (max-width: 991px){
+        font-size: 30px;
+        text-align: center;
+      }
     }
     &-bg{
       top: 0;
@@ -92,6 +100,29 @@
       .event{
         .body{
           background: white;
+        }
+      }
+      @media (max-width: 768px){
+        width: 100%;
+        padding: 0 15px;
+        .event{
+          width: 100%;
+        }
+      }
+    }
+
+    @media (max-width: 991px){
+      flex-direction: column-reverse;
+      .search-form{
+        width: 100%;
+      }
+    }
+    @media (max-width: 768px){
+      margin: 0;
+      .search-form{
+        padding: 0 15px;
+        input{
+          min-width: 240px;
         }
       }
     }

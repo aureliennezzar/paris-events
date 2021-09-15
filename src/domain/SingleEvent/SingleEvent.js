@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import parse from 'html-react-parser';
 import {useParams} from "react-router-dom/cjs/react-router-dom";
-import {fetchApi} from "../../utils/utils";
+import {fetchApi, formatDate} from "../../utils/utils";
+import "./SingleEvent.scss"
 
 const SingleEvent = () => {
     const [event, setEvent] = useState(null);
@@ -39,39 +40,50 @@ const SingleEvent = () => {
     return (
         <section className="page page-event">
             {event && <>
+                <img className="principal-img" src={event.record.fields.cover.url} alt={event.record.fields.cover_alt}/>
                 <h1>{event.record.fields.title}</h1>
-                <img src={event.record.fields.cover.url} alt={event.record.fields.cover_alt}/>
-                <div className="desc">
-                    {parse(event.record.fields.description)}
-                </div>
-                <div className="date">{
-                    event.record.fields.date_end
-                        ? <> Du {event.record.fields.date_start}, au {event.record.fields.date_end}
-                        </>
-                        : <> Débute le {event.record.fields.date_start}
-                        </>
-                }</div>
-                <p className="price">Prix : <strong>{event.record.fields.price_detail}</strong></p>
-                <address>
-                    {event.record.fields.address_name}<br/>
-                    {event.record.fields.address_street}<br/>
-                    {event.record.fields.address_zipcode} {event.record.fields.address_city}
-                </address>
-                {
-                    event.record.fields.transport &&
-                    <div className="transport"><strong>Comment nous rejoindre ?</strong> {event.record.fields.transport} </div>
-                }
-                <div className="contact-infos">
-                    {event.record.fields.contact_phone && <>Tél : <a href={"tel:"+event.record.fields.contact_phone}>{event.record.fields.contact_phone}</a></>}
-                    {event.record.fields.contact_mail && <>Mail : <a href={"mailto:"+event.record.fields.contact_mail}>{event.record.fields.contact_mail}</a></>}
-                    {event.record.fields.contact_facebook && <>Twitter : <a href={event.record.fields.contact_facebook}>Cliquer ici</a></>}
-                    {event.record.fields.contact_twitter && <>Facebook : <a href={event.record.fields.contact_twitter}>Cliquer ici</a></>}
+                <div className="event-content">
+                    <div className="desc">
+                        {parse(event.record.fields.description)}
+                    </div>
+                    <div className="event-meta">
+                        <h2>INFORMATIONS</h2>
+                        <div className="date">{
+                            event.record.fields.date_end
+                                ? <><strong>Date : </strong>Du {formatDate(event.record.fields.date_start)} au {formatDate(event.record.fields.date_end)}
+                                </>
+                                : <><strong>Date : </strong>Débute le {formatDate(event.record.fields.date_start)}
+                                </>
+                        }</div>
+                        {event.record.fields.price_detail && <p className="price">Prix : <strong>{event.record.fields.price_detail}</strong></p>}
+
+                        <address className="address">
+                            {event.record.fields.address_name}<br/>
+                            {event.record.fields.address_street}<br/>
+                            {event.record.fields.address_zipcode} {event.record.fields.address_city}
+                        </address>
+
+                        {event.record.fields.transport &&
+                        <div className="transport"><strong>Comment nous rejoindre ?</strong> {event.record.fields.transport}
+                        </div>}
+
+                        <div className="contact-infos">
+                            {event.record.fields.contact_phone && <p>Tél : <a
+                                href={"tel:" + event.record.fields.contact_phone}>{event.record.fields.contact_phone}</a></p>}
+                            {event.record.fields.contact_mail && <p>Mail : <a
+                                href={"mailto:" + event.record.fields.contact_mail}>{event.record.fields.contact_mail}</a></p>}
+                            {event.record.fields.contact_facebook && <p>Twitter : <a
+                                href={event.record.fields.contact_facebook}>Cliquer ici</a></p>}
+                            {event.record.fields.contact_twitter && <p>Facebook : <a
+                                href={event.record.fields.contact_twitter}>Cliquer ici</a></p>}
+                        </div>
+                    </div>
                 </div>
             </>}
 
-            <button className="btn-fav" onClick={handleFav}>
-                fav / {isFav ? "its fav" : "its not fav"}
-            </button>
+            <p className="link" onClick={handleFav}>
+                {isFav ? "Enlever des favoris" : "Ajouter aux favoris"}
+            </p>
         </section>
     )
 }

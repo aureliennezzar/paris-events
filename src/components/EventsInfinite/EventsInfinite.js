@@ -80,8 +80,8 @@ class EventsInfinite extends Component {
                 <div style={{minHeight: "800px"}} className="events-list">
                     <ul>
                         {this.state.events.map((event, i) => (
-                            <li>
-                                <Event key={i} infos={event.record.fields} eventID={event.record.id}/>
+                            <li key={event.record.id}>
+                                <Event infos={event.record.fields} eventID={event.record.id}/>
                             </li>
                         ))}
                     </ul>

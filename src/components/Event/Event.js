@@ -21,7 +21,7 @@ const Event = ({infos, eventID}) => {
     }, [])
 
     const ChangePath = (path)=>{
-        history.push(path)
+        history.push("/"+path)
     }
     const handleFav = () => {
         if (isFav) {

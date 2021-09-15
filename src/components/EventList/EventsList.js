@@ -11,8 +11,8 @@ const EventsList = ({events}) => {
         <div className="events-list">
             <ul>
                 {events && events.map((item, i) => (
-                    <li>
-                        <Event key={i} infos={item.record.fields} eventID={item.record.id}/>
+                    <li key={item.record.id}>
+                        <Event infos={item.record.fields} eventID={item.record.id}/>
                     </li>
                 ))}
             </ul>

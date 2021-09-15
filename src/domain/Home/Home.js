@@ -3,11 +3,13 @@ import Event from "../../components/Event/Event";
 import "./Home.scss"
 import bgImg from "../../assets/img/event.jpg"
 import searchImg from "../../assets/img/loupe.svg"
+import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
 const Home = () => {
     const [lastEvent, setLastEvent] = useState(null)
     const [query, setQuery] = useState("")
     const [input, setInput] = useState("")
+    const history = useHistory()
     useEffect(() => {
         const API = "https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-"
         fetch(`${API}/records?order_by=updated_at%20desc&limit=1&pretty=false&timezone=UTC`)
@@ -19,8 +21,7 @@ const Home = () => {
     }, [])
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        setQuery(input)
+        history.push("/rechercher/"+input)
     }
     return (
         <section className="page page-home">
